@@ -1,0 +1,15 @@
+services:
+  debian-gen:
+    build:
+      context: ./debian
+      no_cache: true
+    # volumes:
+    #   - debian-gen-propagate:/app
+
+  mingw64-gen:
+    build:
+      context: ./mingw64
+      no_cache: true
+
+volumes:
+  debian-gen-propagate:
