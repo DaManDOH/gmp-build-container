@@ -7,7 +7,10 @@ RUN apt-get update && apt-get -y upgrade && \
     apt-get -y install \
     vim && \
     groupadd -r developers && \
-    useradd -r -g developers -s /bin/bash builduser && \
+    useradd -mr -g developers -s /bin/bash builduser && \
+    echo "export LS_OPTIONS='--color=auto'" > /home/builduser/.bashrc && \
+    echo "eval \"\$(dircolors --sh)\"" >> /home/builduser/.bashrc && \
+    echo "alias ls='ls \${LS_OPTIONS}'" >> /home/builduser/.bashrc && \
     mkdir /app && \
     chown -R builduser:developers /app
 
