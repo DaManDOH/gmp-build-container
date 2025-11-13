@@ -17,11 +17,8 @@ RUN apt-get update && apt-get -y upgrade && \
 USER builduser
 WORKDIR /app
 
-# ADD ./src .
-# RUN make
-
 RUN curl -sLO https://ftp.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz && \
     tar -xvf ./gmp-6.3.0.tar.xz && \
     rm -f ./gmp-6.3.0.tar.xz
 
-ADD ./src .
+ADD --chown=builduser:developers ./src .
